@@ -1,27 +1,27 @@
 class CallEvent:
 
-    def __init__(self, sender, reciever, timestamp):
+    def __init__(self, sender, receiver, timestamp):
         self.sender = sender
-        self.reciever = reciever
+        self.receiver = receiver
         self.timestamp = timestamp
 
 class Call(CallEvent):
-    def __init__(self, sender, reciever, timestamp):
-        super().__init__(sender, reciever, timestamp)
+    def __init__(self, sender, receiver, timestamp):
+        super().__init__(sender, receiver, timestamp)
         self.name = 'call'
 
 class Hangup(CallEvent):
-    def __init__(self, sender, reciever, timestamp, ):
-        super().__init__(sender, reciever, timestamp)
+    def __init__(self, sender, receiver, timestamp, ):
+        super().__init__(sender, receiver, timestamp)
         self.name = 'hangup'
 
 def main(ListOfEvents):
     active_calls = {}
     call_durations = {}
     for event in ListOfEvents:
-        action, sender, reciever, timestamp = event.name, event.sender, event.reciever, event.timestamp
+        action, sender, receiver, timestamp = event.name, event.sender, event.receiver, event.timestamp
         timestamp = int(timestamp)
-        participants = frozenset([sender, reciever])
+        participants = frozenset([sender, receiver])
         if action == "call":
             active_calls[participants] = (timestamp, sender)
         elif action == "hangup":
