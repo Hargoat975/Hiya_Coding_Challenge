@@ -34,5 +34,5 @@ def main(ListOfEvents):
                 else:
                     call_durations[initiater] = {"total_duration": duration, "call_count": 1}
     result = [initiator for initiator, details in call_durations.items() 
-              if details['call_count'] > 0 and (details['total_duration'] / details['call_count']) < 10]
+              if details['call_count'] > 0 and (details['total_duration'] / details['call_count']) < 5]
     return result
